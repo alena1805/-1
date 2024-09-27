@@ -1,0 +1,27 @@
+#include <iostream>
+
+bool isUpperCase(char x) {
+    return x >= 'A' && x <= 'Z'; // Проверка, находится ли символ в диапазоне от 'A' до 'Z'
+}
+
+int main() {
+    char userInput;
+
+    std::cout << "Введите один символ: ";
+    std::cin >> userInput;
+
+    // Проверка на корректность ввода: ввод должен быть один символ
+    if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cout << "Ошибка: введено некорректное значение." << std::endl;
+        return 1; // Завершение программы с кодом ошибки
+    }
+
+    // Проверка, является ли символ заглавной буквой
+    if (isUpperCase(userInput)) {
+        std::cout << "Результат: true (символ является заглавной буквой)" << std::endl;
+    } else {
+        std::cout << "Результат: false (символ не является заглавной буквой)" << std::endl;
+    }
+
+    return 0;
+}
