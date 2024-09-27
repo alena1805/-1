@@ -1,0 +1,39 @@
+#include <iostream>
+#include <limits>
+
+bool equalNum(int x) {
+    // Приводим число к положительному, если оно отрицательное
+    x = std::abs(x);
+    
+    // Получаем последнюю цифру
+    int lastDigit = x % 10;
+
+    // Проверяем остальные цифры
+    while (x > 0) {
+        if (x % 10 != lastDigit) {
+            return false; // Если хоть одна цифра отличается, возвращаем false
+        }
+        x /= 10; // Убираем последнюю цифру
+    }
+
+    return true; // Все цифры одинаковые
+}
+
+int main() {
+    int x;
+
+    std::cout << "Введите целое число: ";
+    while (!(std::cin >> x)) {
+        std::cout << "Пожалуйста, введите корректное целое число: ";
+        std::cin.clear(); // Сброс состояния потока
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорирование некорректного ввода
+    }
+
+    if (equalNum(x)) {
+        std::cout << "Результат: true" << std::endl;
+    } else {
+        std::cout << "Результат: false" << std::endl;
+    }
+
+    return 0;
+}
