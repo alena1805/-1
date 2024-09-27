@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
+std::string reverseListNums(int x) {
+    std::ostringstream result; // Используем ostringstream для формирования строки
+
+    for (int i = x; i >= 0; --i) {
+        result << i; // Добавляем текущее число в поток
+        if (i > 0) {
+            result << " "; // Добавляем пробел, если это не последнее число
+        }
+    }
+
+    return result.str(); // Возвращаем сформированную строку
+}
+
+int main() {
+    int x;
+    std::cout << "Введите число: ";
+    std::cin >> x;
+
+    // Проверка на ввод
+    if (std::cin.fail() || x < 0) {
+        std::cerr << "Ошибка: введите неотрицательное целое число." << std::endl;
+        return 1; // Завершаем программу с ошибкой
+    }
+
+    std::string result = reverseListNums(x);
+    std::cout << "Результат: " << result << std::endl;
+
+    return 0;
+}
