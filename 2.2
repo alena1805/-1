@@ -1,0 +1,46 @@
+#include <iostream>
+#include <limits> // Для std::numeric_limits
+
+// Функция для безопасного деления
+double safeDiv(int x, int y) {
+    if (y == 0) {
+        return 0.0; // Если y равно 0, возвращаем 0
+    }
+    return static_cast<double>(x) / y; // Иначе выполняем деление
+}
+
+int main() {
+    int x, y;
+
+    // Запрашиваем ввод для x
+    std::cout << "Введите целое число (x): ";
+    while (true) {
+        std::cin >> x;
+        if (std::cin.fail()) {
+            std::cin.clear(); // Сбрасываем состояние потока
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очищаем входной буфер
+            std::cout << "Неверный ввод. Пожалуйста, введите целое число: ";
+        } else {
+            break; // Ввод корректен, выходим из цикла
+        }
+    }
+
+    // Запрашиваем ввод для y
+    std::cout << "Введите целое число (y): ";
+    while (true) {
+        std::cin >> y;
+        if (std::cin.fail()) {
+            std::cin.clear(); // Сбрасываем состояние потока
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очищаем входной буфер
+            std::cout << "Неверный ввод. Пожалуйста, введите целое число: ";
+        } else {
+            break; // Ввод корректен, выходим из цикла
+        }
+    }
+
+    // Выполняем безопасное деление и выводим результат
+    double result = safeDiv(x, y);
+    std::cout << "Результат: " << result << std::endl;
+
+    return 0;
+}
