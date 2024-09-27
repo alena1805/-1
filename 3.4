@@ -1,0 +1,38 @@
+#include <iostream>
+#include <limits>
+
+int pow(int x, int y) {
+    int result = 1; // Начальное значение результата
+    for (int i = 0; i < y; ++i) {
+        result *= x; // Умножаем x y раз
+    }
+    return result;
+}
+
+int main() {
+    int x, y;
+
+    // Ввод числа x с проверкой на корректность
+    std::cout << "Введите число x: ";
+    while (!(std::cin >> x)) {
+        std::cin.clear(); // Сбрасываем состояние потока
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорируем некорректный ввод
+        std::cout << "Некорректный ввод. Пожалуйста, введите целое число: ";
+    }
+
+    // Ввод степени y с проверкой на корректность
+    std::cout << "Введите степень y (неотрицательное целое число): ";
+    while (!(std::cin >> y) || y < 0) {
+        std::cin.clear(); // Сбрасываем состояние потока
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорируем некорректный ввод
+        std::cout << "Некорректный ввод. Пожалуйста, введите неотрицательное целое число: ";
+    }
+
+    // Вычисление степени
+    int result = pow(x, y);
+    
+    // Вывод результата
+    std::cout << x << " в степени " << y << " равно " << result << std::endl;
+
+    return 0;
+}
