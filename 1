@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+
+double fraction(double x) {
+    return x - static_cast<int>(x);
+}
+
+int main() {
+    double userInput;
+
+    std::cout << "Введите число: ";
+    std::cin >> userInput;
+
+    // Проверка на правильность ввода
+    if (std::cin.fail()) {
+        std::cout << "Ошибка: введено некорректное число." << std::endl;
+        return 1; // Завершение программы с ошибкой
+    }
+
+    double result = fraction(userInput);
+    std::cout << "Дробная часть числа: " << result << std::endl;
+
+    return 0;
+}
