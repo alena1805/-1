@@ -1,0 +1,42 @@
+#include <iostream>
+#include <limits>
+
+int numLen(long x) {
+    // Если число отрицательное, делаем его положительным
+    if (x < 0) {
+        x = -x;
+    }
+
+    // Если число равно нулю, то длина равна 1
+    if (x == 0) {
+        return 1;
+    }
+
+    int length = 0;
+    while (x > 0) {
+        x /= 10; // Делим число на 10
+        length++; // Увеличиваем счетчик разрядов
+    }
+
+    return length;
+}
+
+int main() {
+    long x;
+
+    // Ввод числа x с проверкой на корректность
+    std::cout << "Введите число (long): ";
+    while (!(std::cin >> x)) {
+        std::cin.clear(); // Сбрасываем состояние потока
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорируем некорректный ввод
+        std::cout << "Некорректный ввод. Пожалуйста, введите целое число: ";
+    }
+
+    // Вычисление длины числа
+    int length = numLen(x);
+    
+    // Вывод результата
+    std::cout << "Количество знаков в числе " << x << " равно " << length << std::endl;
+
+    return 0;
+}
