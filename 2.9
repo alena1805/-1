@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <limits>
+
+std::string day(int x) {
+    switch (x) {
+        case 1:
+            return "понедельник";
+        case 2:
+            return "вторник";
+        case 3:
+            return "среда";
+        case 4:
+            return "четверг";
+        case 5:
+            return "пятница";
+        case 6:
+            return "суббота";
+        case 7:
+            return "воскресенье";
+        default:
+            return "это не день недели";
+    }
+}
+
+int main() {
+    int x;
+    
+    while (true) {
+        std::cout << "Введите номер дня недели (1-7): ";
+        std::cin >> x;
+
+        if (std::cin.fail()) {
+            std::cin.clear(); // Сброс состояния
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Удаление некорректного ввода
+            std::cout << "Пожалуйста, введите целое число." << std::endl;
+        } else {
+            break; // Ввод корректен, выходим из цикла
+        }
+    }
+
+    std::string result = day(x);
+    std::cout << result << std::endl;
+
+    return 0;
+}
