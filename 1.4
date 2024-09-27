@@ -1,0 +1,27 @@
+#include <iostream>
+
+bool isPositive(int x) {
+    return x > 0; // Возвращает true, если x положительное
+}
+
+int main() {
+    int userInput;
+
+    std::cout << "Введите целое число: ";
+    std::cin >> userInput;
+
+    // Проверка на правильность ввода
+    if (std::cin.fail()) {
+        std::cout << "Ошибка: введено некорректное число." << std::endl;
+        return 1; // Завершение программы с кодом ошибки
+    }
+
+    // Проверка, является ли число положительным
+    if (isPositive(userInput)) {
+        std::cout << "Результат: true (число положительное)" << std::endl;
+    } else {
+        std::cout << "Результат: false (число не положительное)" << std::endl;
+    }
+
+    return 0;
+}
