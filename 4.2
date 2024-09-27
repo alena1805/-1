@@ -1,0 +1,36 @@
+#include <iostream>
+#include <limits>
+
+int findLast(int arr[], int size, int x) {
+    for (int i = size - 1; i >= 0; --i) {
+        if (arr[i] == x) return i;
+    }
+    return -1;
+}
+
+int main() {
+    const int SIZE = 7;
+    int arr[SIZE];
+
+    std::cout << "Введите " << SIZE << " целых чисел:\n";
+    for (int& num : arr) {
+        while (!(std::cin >> num)) {
+            std::cout << "Ошибка ввода! Пожалуйста, введите целое число.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+
+    int x;
+    std::cout << "Введите число для поиска: ";
+    while (!(std::cin >> x)) {
+        std::cout << "Ошибка ввода! Пожалуйста, введите целое число.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+
+    int result = findLast(arr, SIZE, x);
+    std::cout << (result != -1 ? "Последнее вхождение числа " + std::to_string(x) + " находится на индексе: " + std::to_string(result) : "Число " + std::to_string(x) + " не найдено в массиве.") << std::endl;
+
+    return 0;
+}
