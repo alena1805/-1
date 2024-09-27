@@ -1,0 +1,31 @@
+#include <iostream>
+
+int sumLastNums(int x) {
+    // Получаем последнюю цифру
+    int lastDigit = x % 10;
+    // Убираем последнюю цифру
+    x /= 10;
+    // Получаем предпоследнюю цифру
+    int secondLastDigit = x % 10;
+    
+    // Возвращаем сумму двух последних цифр
+    return lastDigit + secondLastDigit;
+}
+
+int main() {
+    int number;
+    
+    std::cout << "Введите число (не менее двух знаков): ";
+    std::cin >> number;
+
+    // Проверяем, что число действительно имеет хотя бы два знака
+    if (number < 10 && number > -10) {
+        std::cout << "Ошибка: число должно содержать как минимум две цифры." << std::endl;
+        return 1; // Выход с ошибкой
+    }
+
+    int result = sumLastNums(number);
+    std::cout << "Сумма двух последних знаков числа " << number << " равна " << result << std::endl;
+
+    return 0;
+}
