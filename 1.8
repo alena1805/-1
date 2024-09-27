@@ -1,0 +1,30 @@
+#include <iostream>
+#include <limits> // Добавлено для использования std::numeric_limits
+
+bool isDivisor(int a, int b) {
+    // Проверка, делит ли a нацело b или b нацело a
+    return (a != 0 && b % a == 0) || (b != 0 && a % b == 0);
+}
+
+int main() {
+    int a, b;
+
+    std::cout << "Введите два целых числа (a и b): ";
+
+    // Проверка на корректный ввод
+    while (!(std::cin >> a >> b)) {
+        std::cout << "Ошибка: введите два целых числа." << std::endl;
+        std::cin.clear(); // Сбросить состояние ошибки
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорировать некорректный ввод
+        std::cout << "Введите два целых числа (a и b): ";
+    }
+
+    // Вызов функции и вывод результата
+    if (isDivisor(a, b)) {
+        std::cout << "Результат: true (одно число делит другое нацело)" << std::endl;
+    } else {
+        std::cout << "Результат: false (числа не делят друг друга нацело)" << std::endl;
+    }
+
+    return 0;
+}
