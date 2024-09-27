@@ -1,0 +1,29 @@
+#include <iostream>
+
+bool sum3(int x, int y, int z) {
+    // Проверяем все возможные комбинации
+    return (x + y == z) || (x + z == y) || (y + z == x);
+}
+
+int main() {
+    int x, y, z;
+
+    // Проверка на ввод
+    std::cout << "Введите три числа (x, y, z): ";
+    std::cin >> x >> y >> z;
+
+    // Проверка на успешный ввод
+    if (std::cin.fail()) {
+        std::cout << "Ошибка ввода. Пожалуйста, введите целые числа." << std::endl;
+        return 1; // Завершаем программу с ошибкой
+    }
+
+    // Вызов функции и вывод результата
+    if (sum3(x, y, z)) {
+        std::cout << "Результат: true" << std::endl;
+    } else {
+        std::cout << "Результат: false" << std::endl;
+    }
+
+    return 0;
+}
