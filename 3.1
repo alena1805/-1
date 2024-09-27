@@ -1,0 +1,18 @@
+#include <iostream>
+#include <sstream> // Подключаем заголовочный файл для использования std::ostringstream
+
+std::string listNums(int n) {
+    std::ostringstream oss; // Используем ostringstream для формирования строки
+    for (int i = 0; i <= n; ++i) {
+        oss << i << " "; // Добавляем числа в строку
+    }
+    return oss.str(); // Возвращаем сформированную строку
+}
+
+int main() {
+    int n;
+    std::cout << "Введите число: ";
+    std::cin >> n; // Читаем число от пользователя
+    std::cout << listNums(n) << std::endl; // Выводим строку с числами
+    return 0; // Завершаем программу
+}
