@@ -1,0 +1,32 @@
+#include <iostream>
+#include <limits> // Для std::numeric_limits
+
+// Функция для вычисления модуля числа
+int abs(int x) {
+    return (x >= 0) ? x : -x; // Если x положительное, возвращаем его, иначе возвращаем -x
+}
+
+int main() {
+    int x;
+
+    std::cout << "Введите целое число (x): ";
+
+    while (true) {
+        std::cin >> x;
+
+        // Проверка на корректность ввода
+        if (std::cin.fail()) {
+            std::cin.clear(); // Сбрасываем состояние потока
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очищаем входной буфер
+            std::cout << "Неверный ввод. Пожалуйста, введите целое число: ";
+        } else {
+            break; // Ввод корректен, выходим из цикла
+        }
+    }
+
+    // Вызов функции abs и вывод результата
+    int result = abs(x);
+    std::cout << "Результат: " << result << std::endl;
+
+    return 0;
+}
